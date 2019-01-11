@@ -3,7 +3,7 @@ COLORS:
 
 Light green: #7ed56f
 Medium green: #55c57a
-Dark green: #28b485
+Dark green: 5#28b48
 
 */
 
@@ -12,16 +12,65 @@ Dark green: #28b485
     padding: 0;
     box-sizing: border-box;
 }
-/*set the basic settings in body*/
+/*set the project-wide basic settings in body*/
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.7;
     color: #777;
+    padding: 30px;
 }
 
 .header {
+    position: relative;
     height: 95vh;
+    background-image: linear-gradient(
+        to right bottom,
+        #7ed56fa8, 
+        #28b48fd8), 
+        url(../img/hero.jpg);
+    background-size: cover;
+    /*the top of the image always stays top at yhe container*/
+    background-position: top;
+    /*set the coordinates starts left top - right top right bottom left bottom points*/
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+.text-box{
+    position: absolute;
+    /*in relation to a parent element*/
+    top: 40%;
+    left:50%;
+    /*50% are no longer relation to a parent element but the element itself */
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.heading-primary{
+    color: #ffffff;
+    text-transform: uppercase;
     
+}
+
+.heading-primary-main{
+    /* display block takes the entire row*/
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px; 
 }
