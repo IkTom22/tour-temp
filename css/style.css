@@ -107,6 +107,16 @@ body {
         transform: translate(0);
     }
 }
+@keyframes moveInBottom{
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 /*use sudo classes*/
 .btn:link,
 .btn:visited {
@@ -117,6 +127,7 @@ body {
     border-radius: 200px;
     /*transition property has to be in the initial state*/
     transition: all .2s;
+    position: relative;
 }
 /*When hovers, it moves up by 3px*/
 .btn:hover{
@@ -132,4 +143,35 @@ body {
 .btn-white{
     background-color: #fff;
     color: #777;
+
+}
+
+.btn::after{
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /*initial state of btn-white:hover::after, btn-white::after*/
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+/*whe we hover, after do this*/
+.btn-white:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated{
+    /*name, duration, timing function, delay*/
+    animation: moveInBottom .5s ease-out .75s;
+    /*animation-fill-mode: backwards automaticly apply the animation 0% before the animation starts*/
+    animation-fill-mode: backwards;
 }
