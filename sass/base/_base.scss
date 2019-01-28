@@ -1,0 +1,18 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /*define the root font size. Now 1rem = 10px. Easy to calculate*/
+    /* font-size: 10px; */
+    /* ^^^^Best practice -- browzer font is 100% = 16px so we want 10/16 = 0.625*/
+    // this defines what 1rem is
+    font-size: 62.5%;
+}
+body{
+    box-sizing: border-box;
+}
