@@ -25,30 +25,27 @@ body {
 .header {
   position: relative;
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(67, 212, 41, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(90, 224, 66, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
   background-size: cover;
   /*the top of the image always stays top at yhe container*/
   background-position: top;
   /*set the coordinates starts left top - right top right bottom left bottom points*/
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  position: absolute;
-  /*in relation to a parent element*/
-  top: 40%;
-  left: 50%;
-  /*50% are no longer relation to a parent element but the element itself */
-  transform: translate(-50%, -50%);
-  /*btn will be center as well because inline block will be treated as text*/
-  text-align: center; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    /*in relation to a parent element*/
+    top: 40%;
+    left: 50%;
+    /*50% are no longer relation to a parent element but the element itself */
+    transform: translate(-50%, -50%);
+    /*btn will be center as well because inline block will be treated as text*/
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
@@ -56,21 +53,19 @@ body {
   /*^^^^^^^to fix the little'shake' of the animation^^^^^^^^^*/
   backface-visibility: hidden;
   margin-bottom: 6rem; }
-
-.heading-primary--main {
-  /* display block takes the entire row*/
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation: moveInLeft 1s ease-out; }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out; }
+  .heading-primary--main {
+    /* display block takes the entire row*/
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation: moveInLeft 1s ease-out; }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
 
 @keyframes moveInLeft {
   0% {
@@ -101,56 +96,52 @@ body {
     transform: translateY(0); } }
 
 /*use sudo classes*/
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 20rem;
-  /*transition property has to be in the initial state*/
-  transition: all .2s;
-  position: relative;
-  font-size: 1.6rem; }
-
-/*When hovers, it moves up by 3px*/
-.btn:hover {
-  transform: translateY(-0.3rem);
-  /*x-direction, Y, blur, color*/
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-
-/*when clicked, it moves down a bit*/
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-
-.btn--white {
-  background-color: #fff;
-  color: color-grey-dark; }
-
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  /*initial state of btn-white:hover::after, btn-white::after*/
-  transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-/*whe we hover, after do this*/
-.btn--white:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
-.btn--animated {
-  /*name, duration, timing function, delay*/
-  animation: moveInBottom .5s ease-out .75s;
-  /*^^^^^^^^^^^animation-fill-mode: backwards automaticly apply the animation 0% before the animation starts*/
-  animation-fill-mode: backwards; }
+.btn {
+  /*When hovers, it moves up by 3px*/
+  /*when clicked, it moves down a bit*/ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 20rem;
+    /*transition property has to be in the initial state*/
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /*x-direction, Y, blur, color*/
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777;
+    /*when we hover, after do this*/ }
+    .btn--white::after {
+      background-color: #fff; }
+    .btn--white:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /*initial state of btn-white:hover::after, btn-white::after*/
+    transition: all .4s; }
+  .btn--animated {
+    /*name, duration, timing function, delay*/
+    animation: moveInBottom .5s ease-out .75s;
+    /*^^^^^^^^^^^animation-fill-mode: backwards automaticly apply the animation 0% before the animation starts*/
+    animation-fill-mode: backwards; }
