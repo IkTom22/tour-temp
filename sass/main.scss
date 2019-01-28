@@ -1,9 +1,25 @@
+@import "abstract/functions";
+@import "abstract/mixins";
+@import "abstract/variables";
+
+
+@import "base/base";
+@import "base/animation";
+@import "base/typography";
+@import "base/utilities";
+
+@import "pages/home";
+
+
+
 $color-primary: #55c57a;
-$color-primary-light: #43d429;
+$color-primary-light: #5ae042;
 $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
+
 
 *,
 *::after,
@@ -43,52 +59,56 @@ body {
     /*the top of the image always stays top at yhe container*/
     background-position: top;
     /*set the coordinates starts left top - right top right bottom left bottom points*/
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    
+    &__logo {
+        height: 3.5rem;
+    }
+    &__text-box{
+        position: absolute;
+        /*in relation to a parent element*/
+        top: 40%;
+        left:50%;
+        /*50% are no longer relation to a parent element but the element itself */
+        transform: translate(-50%, -50%);
+        /*btn will be center as well because inline block will be treated as text*/
+        text-align: center;
+    }
 }
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
 
-.header__logo {
-    height: 3.5rem;
-}
-.header__text-box{
-    position: absolute;
-    /*in relation to a parent element*/
-    top: 40%;
-    left:50%;
-    /*50% are no longer relation to a parent element but the element itself */
-    transform: translate(-50%, -50%);
-    /*btn will be center as well because inline block will be treated as text*/
-    text-align: center;
-}
 .heading-primary{
     color: $color-white;
     text-transform: uppercase;
     /*^^^^^^^to fix the little'shake' of the animation^^^^^^^^^*/
     backface-visibility: hidden;
     margin-bottom: 6rem;
+    &--main{
+        /* display block takes the entire row*/
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation: moveInLeft 1s ease-out;
+    }
+    
+    &--sub{
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.75rem; 
+        animation: moveInRight 1s ease-out;
+    }
 }
 
-.heading-primary--main{
-    /* display block takes the entire row*/
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation: moveInLeft 1s ease-out;
-}
 
-.heading-primary--sub{
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem; 
-    animation: moveInRight 1s ease-out;
-}
 
 @keyframes moveInLeft{
     0%{
@@ -127,61 +147,67 @@ body {
     }
 }
 /*use sudo classes*/
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    border-radius: 20rem;
-    /*transition property has to be in the initial state*/
-    transition: all .2s;
-    position: relative;
-    font-size: 1.6rem;
-}
-/*When hovers, it moves up by 3px*/
-.btn:hover{
-    transform: translateY(-0.3rem);
-    /*x-direction, Y, blur, color*/
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
-/*when clicked, it moves down a bit*/
-.btn:active {
-    transform: translateY(-.1rem);
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);
-}
-.btn--white{
-    background-color: $color-white;
-    color: color-grey-dark;
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 20rem;
+        /*transition property has to be in the initial state*/
+        transition: all .2s;
+        position: relative;
+        font-size: 1.6rem;
+    }
+    /*When hovers, it moves up by 3px*/
+    &:hover{
+        transform: translateY(-0.3rem);
+        /*x-direction, Y, blur, color*/
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+    /*when clicked, it moves down a bit*/
+    &:active {
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
+    }
+    &--white{
+        background-color: $color-white;
+        color: $color-grey-dark;
+        &::after {
+            background-color: $color-white;
+        }
+        /*when we hover, after do this*/
+        &:hover::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+
+    }
+
+    &::after{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        /*initial state of btn-white:hover::after, btn-white::after*/
+        transition: all .4s;
+    }
+    &--animated{
+        /*name, duration, timing function, delay*/
+        animation: moveInBottom .5s ease-out .75s;
+        /*^^^^^^^^^^^animation-fill-mode: backwards automaticly apply the animation 0% before the animation starts*/
+        animation-fill-mode: backwards;
+    }
 
 }
 
-.btn::after{
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    /*initial state of btn-white:hover::after, btn-white::after*/
-    transition: all .4s;
-}
-
-.btn--white::after {
-    background-color: $color-white;
-}
-/*whe we hover, after do this*/
-.btn--white:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-
-.btn--animated{
-    /*name, duration, timing function, delay*/
-    animation: moveInBottom .5s ease-out .75s;
-    /*^^^^^^^^^^^animation-fill-mode: backwards automaticly apply the animation 0% before the animation starts*/
-    animation-fill-mode: backwards;
-}
