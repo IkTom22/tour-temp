@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/IkTom22/tour-temp#readme",
   "devDependencies": {
+    "eslint-plugin-prettier": "^3.0.1",
     "node-sass": "^4.11.0"
   }
 }
