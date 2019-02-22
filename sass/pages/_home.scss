@@ -20,7 +20,7 @@
         -webkit-transform: skewY(-7deg);
                 transform: skewY(-7deg);
         margin-top: -10rem;
-        // '>' means 'direct child'. so below is choosing 'only everything that direct child'. In ths case it is 'row'
+        // --------'>' means 'direct child'. so below is choosing 'only everything that direct child'. In ths case it is 'row'
         & > * {
             -webkit-transform: skewY(7deg);
                     transform: skewY(7deg);
