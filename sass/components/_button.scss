@@ -8,24 +8,30 @@
         display: inline-block;
         border-radius: 20rem;
         /*transition property has to be in the initial state*/
+        -webkit-transition: all .2s;
         transition: all .2s;
         position: relative;
         font-size: $default-font-size;
     }
     /*When hovers, it moves up by 3px*/
     &:hover{
-        transform: translateY(-0.3rem);
+        -webkit-transform: translateY(-0.3rem);
+                transform: translateY(-0.3rem);
         /*x-direction, Y, blur, color*/
-        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        -webkit-box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+                box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
         &::after {
-            transform: scaleX(1.4) scaleY(1.6);
+            -webkit-transform: scaleX(1.4) scaleY(1.6);
+                    transform: scaleX(1.4) scaleY(1.6);
             opacity: 0;
         }
     }
     /*when clicked, it moves down a bit*/
     &:active {
-        transform: translateY(-.1rem);
-        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
+        -webkit-transform: translateY(-.1rem);
+                transform: translateY(-.1rem);
+        -webkit-box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
+                box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
     }
     &--white{
         background-color: $color-white;
@@ -35,10 +41,23 @@
         }
         /*when we hover, after do this*/
         &:hover::after {
-            transform: scaleX(1.4) scaleY(1.6);
+            -webkit-transform: scaleX(1.4) scaleY(1.6);
+                    transform: scaleX(1.4) scaleY(1.6);
             opacity: 0;
         }
-
+    }
+    &--green{
+        background-color: $color-primary;
+        color: $color-white;
+        &::after {
+            background-color: $color-primary;
+        }
+        /*when we hover, after do this*/
+        &:hover::after {
+            -webkit-transform: scaleX(1.4) scaleY(1.6);
+                    transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
     }
 
     &::after{
@@ -52,13 +71,16 @@
         left: 0;
         z-index: -1;
         /*initial state of btn-white:hover::after, btn-white::after*/
+        -webkit-transition: all .4s;
         transition: all .4s;
     }
     &--animated{
         /*name, duration, timing function, delay*/
-        animation: moveInBottom .5s ease-out .75s;
+        -webkit-animation: moveInBottom .5s ease-out .75s;
+                animation: moveInBottom .5s ease-out .75s;
         /*^^^^^^^^^^^animation-fill-mode: backwards automaticly apply the animation 0% before the animation starts*/
-        animation-fill-mode: backwards;
+        -webkit-animation-fill-mode: backwards;
+                animation-fill-mode: backwards;
     }
 
 }
@@ -71,6 +93,7 @@
         border-bottom: 1px solid $color-primary;
         padding: 3px;
         font-size: $default-font-size;
+        -webkit-transition: all .2s;
         transition: all .2s;
     }
 
@@ -78,13 +101,17 @@
         background-color: $color-primary;
         color: $color-white;
         // Box shadow: X Y Blur color
-        box-shadow:0 1rem 2rem rgba($color-black, .15);
-        transform: translateY(-2px);
+        -webkit-box-shadow:0 1rem 2rem rgba($color-black, .15);
+                box-shadow:0 1rem 2rem rgba($color-black, .15);
+        -webkit-transform: translateY(-2px);
+                transform: translateY(-2px);
 
     }
 
     &:active {
-        box-shadow:0 .5rem 1rem rgba($color-black, .15);
-        transform: translateY(0);
+        -webkit-box-shadow:0 .5rem 1rem rgba($color-black, .15);
+                box-shadow:0 .5rem 1rem rgba($color-black, .15);
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
     }
 }
