@@ -1,0 +1,39 @@
+.form {
+    &__group:not(:last-child){
+        margin-bottom: 2rem;
+    }
+
+    &__input{
+        font-size: 1.5rem;
+        // form gives default font-family so state "inherit" to have the same font-family like the rest
+        font-family: inherit;
+        color: inherit;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 90%;
+        display: block;
+        
+        &:focus{
+            outline: none;
+            -webkit-box-shadow: 0 1rem 2rem rgba($color-black, .1);
+                    box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary;
+        }
+        // when forcused then invalid then apply below
+        &:focus:invalid{
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+        //--------- when user starts writing, font color darken
+        &::-webkit-input-placeholder{
+            color: $color-grey-dark-2;
+        }
+        
+    }
+
+    &__label{
+        
+    }
+}
