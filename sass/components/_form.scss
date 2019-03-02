@@ -30,10 +30,23 @@
         &::-webkit-input-placeholder{
             color: $color-grey-dark-2;
         }
-        
     }
 
     &__label{
-        
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+
+    }   
+    //--------when the placehoulder is shown then impliment below code '+' is for adjacent sibling ( right afrter the one before)
+    &__input:placeholder-shown + &__label  {
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transform: translateY(-4rem);
+                transform: translateY(-4rem);
     }
 }
