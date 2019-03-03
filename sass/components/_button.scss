@@ -1,5 +1,7 @@
 /*use sudo classes*/
 .btn {
+    // just '&' is applied to the buttons that does not have 'a'
+    &,
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -12,9 +14,13 @@
         transition: all .2s;
         position: relative;
         font-size: $default-font-size;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
     }
     /*When hovers, it moves up by 3px*/
-    &:hover{
+    &:hover { 
         -webkit-transform: translateY(-0.3rem);
                 transform: translateY(-0.3rem);
         /*x-direction, Y, blur, color*/
@@ -27,7 +33,10 @@
         }
     }
     /*when clicked, it moves down a bit*/
-    &:active {
+    &:active,
+    &:focus {
+        // -------!!to remove the blue outline when focused -- outline: none
+        outline: none;
         -webkit-transform: translateY(-.1rem);
                 transform: translateY(-.1rem);
         -webkit-box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);

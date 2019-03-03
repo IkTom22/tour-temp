@@ -15,6 +15,8 @@
         border-bottom: 3px solid transparent;
         width: 90%;
         display: block;
+        -webkit-transition: all .3s;
+        transition: all .3s;
         
         &:focus{
             outline: none;
@@ -49,4 +51,56 @@
         -webkit-transform: translateY(-4rem);
                 transform: translateY(-4rem);
     }
+    &__radio-group{
+        width: 48%;
+        display: inline-block;
+    }
+    //---!! we don't use default radio button so display: none;
+    &__radio-input{
+        display: none;
+    }
+
+    &__radio-label{
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+        padding-left: 4.5rem;
+        
+    }
+    &__radio-button {
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+
+        // inner circle 
+        &::after{
+            // whenever sudo class is used (::---), need to specify content:""; and display: block; 
+            content: "";
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            background-color: $color-primary;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+            opacity: 0;  
+            -webkit-transition: opacity .2s;  
+            transition: opacity .2s;      
+        }
+    }
+    // ---------!!!when radio-input is 'checked', it's sibling radio-label's child radio-buttn::after's opacity will become 1 
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;
+
+        
+    }
+
 }
