@@ -2,6 +2,12 @@
 .header {
     position: relative;
     height: 95vh;
+    background-image: -webkit-gradient(
+        linear,
+        left top, right bottom,
+        from(rgba($color-primary-light , 0.8)), 
+        to(rgba($color-primary-dark, 0.8))), 
+        url(../img/hero.jpg);
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light , 0.8), 
@@ -11,7 +17,13 @@
     /*the top of the image always stays top at yhe container*/
     background-position: top;
     /*set the coordinates starts left top - right top right bottom left bottom points*/
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    
+    @include respond(phone){
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+                clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
 
     &__logo-box {
         position: absolute;
@@ -29,7 +41,8 @@
         top: 40%;
         left:50%;
         /*50% are no longer relation to a parent element but the element itself */
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
         /*btn will be center as well because inline block will be treated as text*/
         text-align: center;
     }
