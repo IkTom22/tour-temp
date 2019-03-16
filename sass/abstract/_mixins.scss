@@ -27,6 +27,8 @@
 // tab-port   900px / 16 = 56.25em
 //tab-land
 //big-desktop 
+
+//ORDER: Base + typography > general layout + grid > page layout >components
 // em is the best solution for media query 1em =16px
 @mixin respond($breakpoint) {
     @if $breakpoint == phone {
