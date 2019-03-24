@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "compile:sass": "node-sass sass/main.scss css/style.comp.css"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/IkTom22/tour-temp#readme",
   "devDependencies": {
+    "concat": "^1.0.3",
     "eslint-plugin-prettier": "^3.0.1",
     "node-sass": "^4.11.0"
   }
