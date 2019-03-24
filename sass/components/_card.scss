@@ -174,8 +174,9 @@
         font-weight: 100;
     }
 
-
-    @include respond(tab-port){
+    @media only screen and (max-width:56.25em),
+        only screen and (hover: none) {
+    // @include respond(tab-port){
        
         // --------for absolute position, clearfix does not work so the same height has to be given to the parent
         height : auto;
