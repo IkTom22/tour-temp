@@ -7,18 +7,51 @@
         left top, right bottom,
         from(rgba($color-primary-light , 0.8)), 
         to(rgba($color-primary-dark, 0.8))), 
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light , 0.8), 
         rgba($color-primary-dark, 0.8)), 
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
     background-size: cover;
     /*the top of the image always stays top at yhe container*/
     background-position: top;
     /*set the coordinates starts left top - right top right bottom left bottom points*/
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
             clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    //apple resolution is 192dpi. Anything higher than 192, or for device pixel ration 1, when the screen is 2000px, do this
+    @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), 
+            (min-resolution: 192dpi) and (min-width: 37.5em), 
+            (min-width: 125em){
+        background-image: -webkit-gradient(
+            linear,
+            left top, right bottom,
+            from(rgba($color-primary-light , 0.8)), 
+            to(rgba($color-primary-dark, 0.8))), 
+            url(../img/hero.jpg);
+        background-image: linear-gradient(
+            to right bottom,
+            rgba($color-primary-light , 0.8), 
+            rgba($color-primary-dark, 0.8)), 
+            url(../img/hero.jpg)
+    }
+    // for device pixel ration 1, when the screen is 2000px + do this
+    // @media (min-width: 2000px){
+    //     background-image: -webkit-gradient(
+    //         linear,
+    //         left top, right bottom,
+    //         from(rgba($color-primary-light , 0.8)), 
+    //         to(rgba($color-primary-dark, 0.8))), 
+    //         url(../img/hero.jpg);
+    //     background-image: linear-gradient(
+    //         to right bottom,
+    //         rgba($color-primary-light , 0.8), 
+    //         rgba($color-primary-dark, 0.8)), 
+    //         url(../img/hero.jpg)        
+    // }
+
+
     
     @include respond(tab-port){
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
